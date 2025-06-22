@@ -27,7 +27,7 @@ url: "https://ccnmxns.me" # the base hostname & protocol for your site, e.g. htt
 github_username:  ccnmxns
 
 # Build settings
-theme: jekyll-theme-basically-basic
+remote_theme: "mmistakes/jekyll-theme-basically-basic@1.4.5"
 skin: sea
 plugins:
   - jekyll-feed
