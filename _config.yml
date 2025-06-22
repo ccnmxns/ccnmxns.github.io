@@ -28,7 +28,6 @@ github_username:  ccnmxns
 
 # Build settings
 remote_theme: "mmistakes/jekyll-theme-basically-basic@1.4.5"
-skin: sea
 plugins:
   - jekyll-feed
 

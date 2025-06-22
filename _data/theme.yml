@@ -1,3 +1,5 @@
 google_fonts:
   - name: Inter
     weights: "400,400i,600,600i"
+
+skin: sea
