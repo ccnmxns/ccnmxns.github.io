@@ -19,19 +19,20 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Carlos Cañellas
-email: ratiosu.cct@gmail.com
+# email: ratiosu.cct@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  DevOps Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ccnmxns.me" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  ccnmxns
 
 # Build settings
-theme: minima
+theme: jekyll-theme-basically-basic
+skin: sea
 plugins:
   - jekyll-feed
+
+search: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
