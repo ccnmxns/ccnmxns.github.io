@@ -1,2 +1,0 @@
-# ccnmxns.github.io
-website
