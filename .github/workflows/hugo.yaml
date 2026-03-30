@@ -79,6 +79,7 @@ jobs:
             hugo-
       - name: Build the site
         run: |
+          hugo mod tidy
           hugo build \
             --gc \
             --minify \
