@@ -23,12 +23,12 @@ He is currently learning more about AI, and how to integrate them into pipelines
 
 {{< timelineItem icon="tag" header="Volkswagen Digital:Hub" badge="2025-current">}}
 
-In his current project he designed and provisioned cloud infrastructure on AWS using CloudFormation and CDK, with a focus on Elastic Container Service (ECS) architectures. Also he built and optimized CI/CD pipelines on GitHub Actions, improving automation coverage and deployment reliability. And he bootstrapped new environments from scratch, encompassing infrastructure provisioning, configuration, and deployment pipeline setup.
+In his current project he designed and provisioned cloud infrastructure on AWS using CloudFormation and CDK, with a focus on Elastic Container Service (ECS) architectures. Also he built and optimized CI/CD pipelines on GitHub Actions, improving automation coverage and deployment reliability. And he bootstrapped new environments from scratch, encompassing infrastructure provisioning, configuration, and deployment pipeline setup. He empowered himself in AI tool usage and OpenShift cluster management.
 
 {{< /timelineItem >}}
 
 {{< timelineItem icon="tag" header="Indra" badge="2024-2025">}}
-One cannot simply say anything good of this company...
+Here he managed pipelines and Kubernetes clusters. That's it.
 
 {{< /timelineItem >}}
 
