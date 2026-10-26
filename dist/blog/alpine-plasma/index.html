@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Install Plasma Desktop on Alpine Linux — Carlos Cañellas</title><meta name="description" content="Installing Plasma 6.5.x on Alpine Linux 3.23, with graphics, Wayland, and desktop services."><style>
+:root{color-scheme:light;--paper:#f7f7f2;--ink:#242923;--muted:#62685e;--line:#daddd3;--green:#42613a}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main,header,footer{width:min(760px,calc(100% - 48px));margin:auto}header{padding:35px 0;display:flex;justify-content:space-between;align-items:center;font-size:13px}a{color:inherit;text-decoration-color:#a4af9c;text-underline-offset:5px}a:hover{color:var(--green);text-decoration-color:currentColor}a:focus-visible{outline:2px solid var(--green);outline-offset:6px}.wordmark,.label,.date,footer{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.wordmark{text-decoration:none;font-weight:600}nav{display:flex;gap:25px}nav a{text-decoration:none;color:var(--muted)}.hero{padding:76px 0 62px;border-bottom:1px solid var(--line)}.label{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--green);margin:0 0 20px}.label:before{content:"";display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;margin-right:10px}h1{font-size:clamp(40px,7vw,64px);line-height:1.08;letter-spacing:-.055em;font-weight:600;margin:0 0 15px}.role{font-size:24px;letter-spacing:-.03em;margin:0 0 23px}.intro{max-width:570px;color:var(--muted);font-size:19px;margin:0}section{padding:38px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--muted);margin:0 0 24px}p{margin:0 0 16px}p:last-child{margin-bottom:0}.experience{display:grid;grid-template-columns:120px 1fr;gap:18px;margin:0 0 27px}.experience:last-child{margin-bottom:0}.date{font-size:12px;color:var(--muted);padding-top:4px}.company{font-size:16px;font-weight:600;margin:0 0 4px}.detail{font-size:15px;color:var(--muted);line-height:1.65}.links{display:flex;flex-wrap:wrap;gap:13px 25px}.links a{font-size:15px;white-space:nowrap}.links span{color:var(--green);font-size:12px;margin-left:4px}.small{font-size:15px;color:var(--muted)}footer{display:flex;justify-content:space-between;gap:20px;padding:26px 0 42px;font-size:11px;color:var(--muted)}.skip{position:absolute;top:-100px}.skip:focus{top:10px;background:var(--paper);padding:10px} @media(max-width:520px){header{padding:25px 0}nav{gap:17px}.hero{padding:49px 0 40px}.role{font-size:21px}.intro{font-size:17px}.experience{grid-template-columns:1fr;gap:4px;margin-bottom:25px}section{padding:30px 0}footer{flex-direction:column;gap:3px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.article{padding-top:45px}.article h1{font-size:clamp(30px,5vw,44px);margin:20px 0}.article h2{font-size:23px;text-transform:none;letter-spacing:-.02em;color:var(--ink);margin:35px 0 15px}.article h3{font-size:19px}.article pre{background:#eceee6;padding:20px;overflow-x:auto;border:1px solid var(--line);border-radius:4px;font-size:13px;line-height:1.65}.article :not(pre)>code{background:#eceee6;padding:2px 5px;overflow-wrap:anywhere}.article img{max-width:100%}.post{display:block;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none}.post h3{font-size:20px;font-weight:500;line-height:1.4;margin:5px 0 8px}.post:hover h3{text-decoration:underline;text-underline-offset:4px}.post p{color:var(--muted);font-size:15px}.post:last-child{border-bottom:0}</style></head><body><header><a class="wordmark" href="/">/ccnmxns</a><nav aria-label="Main navigation"><a href="/#about">About</a><a href="/blog/" aria-current="page">Blog</a><a href="/#links">Links</a></nav></header><main id="main"><article class="article"><a class="small" href="/blog/">← All posts</a><h1>Install Plasma Desktop on Alpine Linux</h1><p class="date"><time datetime="2026-03-30">30 March 2026</time> · Carlos Cañellas</p><p>In this tutorial I will explain how to install Plasma 6.5.x into Alpine Linux 3.23 😄</p>
+<h2>Install Alpine</h2>
+<p>Refer to <a href="https://wiki.alpinelinux.org/wiki/Installation">this guide</a>. Run <code>setup-alpine</code> and all the fish.</p>
+<h2>Configure your graphics card</h2>
+<p>Refer to <a href="https://wiki.alpinelinux.org/wiki/Graphics_driver">this guide</a>. Notice you also have to install the <code>xf86-video-*</code> package.</p>
+<p>Example for AMDGPU (Radeon RX 6700 XT) and KMS:</p>
+<pre><code class="language-sh">su -
+apk add xf86-video-amdgpu mesa-dri-gallium mesa-va-gallium linux-firmware-amdgpu mkinitfs
+echo amdgpu &gt;&gt; /etc/modules
+echo fbcon &gt;&gt; /etc/modules
+sed -i 's/features=&quot;\(.*\)&quot;/features=&quot;\1 kms&quot;/' /etc/mkinitfs/mkinitfs.conf
+mkinitfs
+reboot
+</code></pre>
+<p>Example for Intel Graphics &gt; Broadwell.</p>
+<pre><code class="language-sh">su -
+apk add mesa-dri-gallium mesa-va-gallium mesa-vulkan-intel intel-media-driver
+</code></pre>
+<h2>Install Plasma Desktop</h2>
+<p>As <a href="https://wiki.alpinelinux.org/wiki/KDE">this guide</a> is not alright… I will explain better how to get it properly.</p>
+<p>Edit your <code>/etc/apk/repositories</code> file and uncomment the community line.</p>
+<pre><code class="language-sh">doas apk add vim nano
+export EDITOR=vim  # or nano
+doas $EDITOR /etc/apk/repositories
+</code></pre>
+<p>Then run this:</p>
+<pre><code class="language-sh">su -
+# Adding up locales and base packages like D-Bus.
+apk add polkit-elogind polkit musl-locales lang pam-rundir dbus-openrc dbus dbus-x11 xf86-input-libinput
+# Setting up Wayland...
+setup-wayland-base
+# Setting up the udevices
+setup-devd udev
+# Setting up the services
+dbus-uuidgen &gt; /var/lib/dbus/machine-id
+rc-update add dbus boot
+rc-update add polkit boot
+setup-desktop # select plasma
+rc-update add sddm boot
+# you might reboot instead
+rc-service dbus start
+rc-service polkit start
+rc-service sddm start
+</code></pre>
+<p>And you’re off to go! A basic installation of Plasma on your Alpine Desktop.</p>
+<h2>Adding up more things…</h2>
+<h3>Bluetooth</h3>
+<pre><code class="language-sh">doas apk add bluez
+doas rc-update add bluetooth
+doas rc-service bluetooth start
+</code></pre>
+<h3>NetworkManager</h3>
+<pre><code class="language-sh">doas apk add networkmanager networkmanager-&lt;your-needed-package&gt;
+doas rc-update add networkmanager boot
+doas rc-service networkmanager start
+</code></pre>
+<h2>Notice</h2>
+<p>I tried to do these instructions on two different devices and worked flawlessly. If you have noticed an error feel free to reach me out.</p></article></main><footer><span>© 2026 Carlos Cañellas</span><span>Keep it simple.</span></footer></body></html>
