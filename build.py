@@ -8,6 +8,7 @@ import markdown
 ROOT = Path(__file__).resolve().parent
 DIST = ROOT / 'dist'
 DIST.mkdir(exist_ok=True)
+shutil.copytree(ROOT / 'assets', DIST / 'assets', dirs_exist_ok=True)
 home = (ROOT / 'templates/home.html').read_text()
 style = home.split('<style>')[1].split('</style>')[0]
 style += '\n.article{padding-top:45px}.article h1{font-size:clamp(30px,5vw,44px);margin:20px 0}.article h2{font-size:23px;text-transform:none;letter-spacing:-.02em;color:var(--ink);margin:35px 0 15px}.article h3{font-size:19px}.article pre{background:#eceee6;padding:20px;overflow-x:auto;border:1px solid var(--line);border-radius:4px;font-size:13px;line-height:1.65}.article :not(pre)>code{background:#eceee6;padding:2px 5px;overflow-wrap:anywhere}.article img{max-width:100%}.post{display:block;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none}.post h3{font-size:20px;font-weight:500;line-height:1.4;margin:5px 0 8px}.post:hover h3{text-decoration:underline;text-underline-offset:4px}.post p{color:var(--muted);font-size:15px}.post:last-child{border-bottom:0}'
@@ -30,7 +31,7 @@ blogdir=DIST/'blog'
 if blogdir.exists(): shutil.rmtree(blogdir)
 blogdir.mkdir()
 def page(title,content,description):
-    return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} — Carlos Cañellas</title><meta name="description" content="{escape(description,quote=True)}"><style>{style}</style></head><body><header><a class="wordmark" href="/">/ccnmxns</a><nav aria-label="Main navigation"><a href="/#about">About</a><a href="/blog/" aria-current="page">Blog</a><a href="/#links">Links</a></nav></header><main id="main">{content}</main><footer><span>© {date.today().year} Carlos Cañellas</span><span>Keep it simple.</span></footer></body></html>'
+    return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} — Carlos Cañellas</title><meta name="description" content="{escape(description,quote=True)}"><style>{style}</style></head><body><header><a class="wordmark" href="/">/ccnmxns</a><nav aria-label="Main navigation"><a href="/#pometa">Pometa</a><a href="/#about">About</a><a href="/blog/" aria-current="page">Blog</a><a href="/#links">Links</a></nav></header><main id="main">{content}</main><footer><span>© {date.today().year} Carlos Cañellas</span><span>Keep it simple.</span></footer></body></html>'
 def card(p):
     return f'<a class="post" href="/blog/{p["slug"]}/"><time class="date" datetime="{p["date"]}">{date.fromisoformat(p["date"]).strftime("%d %B %Y")}</time><h3>{escape(p["title"])} ↗</h3><p>{escape(p["summary"])}</p></a>'
 for p in posts:

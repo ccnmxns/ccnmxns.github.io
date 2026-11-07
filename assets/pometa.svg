@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<title>Pometa — tiny apple, big music</title>
+<defs>
+<linearGradient id="tile" x2="0" y2="1"><stop stop-color="#f52672"/><stop offset=".55" stop-color="#f63757"/><stop offset="1" stop-color="#ff6543"/></linearGradient>
+<linearGradient id="fruit" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#fff0eb"/></linearGradient>
+<filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+<rect x="16" y="22" width="224" height="224" rx="48" fill="#000" opacity=".16" filter="url(#shadow)"/>
+<rect x="16" y="19" width="224" height="224" rx="48" fill="#b52448"/>
+<rect x="16" y="15" width="224" height="224" rx="48" fill="url(#tile)"/>
+<path d="M64 16h128c26 0 47 21 47 47v2c0-26-21-47-47-47H64c-26 0-47 21-47 47v-2c0-26 21-47 47-47" fill="#fff" opacity=".2"/>
+<!-- Rounded fruit, with a single musical stem and leaf-shaped flag. -->
+<g fill="#9d183c" opacity=".22" transform="translate(2 4)">
+<path d="M128 104C108 87 79 89 63 110C43 135 55 175 79 195C96 209 114 206 128 200C143 206 162 208 180 191C204 168 212 132 193 110C176 89 150 87 128 104Z" transform="translate(17.92 22.4) scale(.86)"/>
+<path d="M124 116V35Q124 30 129 30H134C138 46 157 47 169 60C183 75 179 93 162 103C170 88 166 78 155 72C147 67 138 67 135 63V116Z"/>
+</g>
+<g fill="url(#fruit)">
+<path d="M128 104C108 87 79 89 63 110C43 135 55 175 79 195C96 209 114 206 128 200C143 206 162 208 180 191C204 168 212 132 193 110C176 89 150 87 128 104Z" transform="translate(17.92 22.4) scale(.86)"/>
+<path d="M124 116V35Q124 30 129 30H134C138 46 157 47 169 60C183 75 179 93 162 103C170 88 166 78 155 72C147 67 138 67 135 63V116Z"/>
+</g>
+<g fill="#cf3053" transform="translate(0 310) scale(1 -1)">
+<path d="M119 143C112 149 107 157 111 163C115 169 122 163 123 157C124 151 121 146 119 143Z"/>
+<path d="M119 143C112 149 107 157 111 163C115 169 122 163 123 157C124 151 121 146 119 143Z" transform="translate(256 0) scale(-1 1)"/>
+</g>
+</svg>
