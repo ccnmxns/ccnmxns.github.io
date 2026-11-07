@@ -31,7 +31,7 @@ blogdir=DIST/'blog'
 if blogdir.exists(): shutil.rmtree(blogdir)
 blogdir.mkdir()
 def page(title,content,description):
-    return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} — Carlos Cañellas</title><meta name="description" content="{escape(description,quote=True)}"><style>{style}</style></head><body><header><a class="wordmark" href="/">/ccnmxns</a><nav aria-label="Main navigation"><a href="/#pometa">Pometa</a><a href="/#about">About</a><a href="/blog/" aria-current="page">Blog</a><a href="/#links">Links</a></nav></header><main id="main">{content}</main><footer><span>© {date.today().year} Carlos Cañellas</span><span>Keep it simple.</span></footer></body></html>'
+    return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} — Carlos Cañellas</title><meta name="description" content="{escape(description,quote=True)}"><style>{style}</style></head><body><header><a class="wordmark" href="/">/ccnmxns</a><nav aria-label="Main navigation"><a href="/#pometa">Pometa</a><a href="/#about">About</a><a href="/blog/" aria-current="page">Blog</a><a href="/#links">Links</a></nav></header><main id="main">{content}</main><footer><span>© {date.today().year} Carlos Cañellas</span><span>Keep it simple.</span><a href="/#support">Support me on Ko-fi ↗</a></footer></body></html>'
 def card(p):
     return f'<a class="post" href="/blog/{p["slug"]}/"><time class="date" datetime="{p["date"]}">{date.fromisoformat(p["date"]).strftime("%d %B %Y")}</time><h3>{escape(p["title"])} ↗</h3><p>{escape(p["summary"])}</p></a>'
 for p in posts:
