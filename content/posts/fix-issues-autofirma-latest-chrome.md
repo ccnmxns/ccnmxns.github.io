@@ -1,10 +1,9 @@
 ---
-title: Fix issues with Autofirma in latest Linux and Chrome-based browsers
+title: Fixing AutoFirma’s connection to Chrome on Linux
 date: 2026-11-08
 summary: This issue arised since Chromium v146, let's fix that!
 ---
 
-# Fixing AutoFirma’s connection to Chrome on Linux
 
 AutoFirma may open normally from the application menu while signing from a website fails. Chrome may report:
 
